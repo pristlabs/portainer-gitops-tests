@@ -16,7 +16,7 @@ services:
     env_file:
       - stack.env
   wordpress:
-    image: wordpress:6.3.0
+    image: wordpress:6.4.0
     ports:
       - 80:80
     restart: always
