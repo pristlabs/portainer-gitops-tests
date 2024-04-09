@@ -10,24 +10,18 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=somewordpress
-      - MYSQL_DATABASE=wordpress
-      - MYSQL_USER=wordpress
-      - MYSQL_PASSWORD=wordpress
     expose:
       - 3306
       - 33060
+    env_file:
+      - stack.env
   wordpress:
     image: wordpress:6.3.0
     ports:
       - 80:80
     restart: always
-    environment:
-      - WORDPRESS_DB_HOST=db
-      - WORDPRESS_DB_USER=wordpress
-      - WORDPRESS_DB_PASSWORD=wordpress
-      - WORDPRESS_DB_NAME=wordpress
+    env_file:
+      - stack.env
 volumes:
   db_data:
 
